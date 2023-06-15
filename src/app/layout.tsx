@@ -1,4 +1,3 @@
-import Script from "next/script";
 import "./globals.css";
 import { Inter } from "next/font/google";
 
@@ -10,7 +9,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="light">
+    <html lang="en">
       <body className={`${inter.className} bg-gray-800`}>{children}</body>
     </html>
   );
