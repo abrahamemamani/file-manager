@@ -22,6 +22,7 @@
     "firebase": "^9.22.1",
     "flowbite": "^1.6.5",
     "flowbite-react": "^0.4.6",
+    "nanoid": "^4.0.2",
     "next": "13.4.4",
     "postcss": "8.4.23",
     "ramda": "^0.29.0",

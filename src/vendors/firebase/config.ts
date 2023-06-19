@@ -15,3 +15,5 @@ const firebaseConfig = {
 
 // Initialize Firebase
 export const firebase = initializeApp(firebaseConfig);
+export const FIREBASE_PATH_STORAGE =
+  "https://firebasestorage.googleapis.com/v0/b/react-file-manager-7d2d1.appspot.com/o/";

@@ -1,17 +1,15 @@
 "use client";
 import * as R from "ramda";
-import {
-  Document,
-  useDocumentStore,
-} from "@/features/add-documents/stores/documents";
+import { useDocumentStore } from "@/features/AddDocuments/stores/documents";
 import { transformObjectToArray } from "@/utils/transformObjectToArray";
 import React, { useEffect } from "react";
 import { DocumentIcon, FolderIcon } from "@heroicons/react/24/outline";
 import { Card, Grid } from "@/components";
+import { IDocument } from "@/types/Document.type";
 
 export default function Page() {
   const { data, fetch } = useDocumentStore((state) => state);
-  const documents = transformObjectToArray(data) as Document[];
+  const documents = transformObjectToArray(data) as IDocument[];
 
   useEffect(() => {
     fetch();

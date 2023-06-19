@@ -10,9 +10,20 @@ import useModal from "./hooks/useModal";
 import { CreateFolderModal } from "./CreateFolderModal";
 import useDocument from "./hooks/useDocument";
 
-export default function AddDocuments() {
+export const AddDocuments = () => {
   const { open, handleOpen, handleClose } = useModal();
-  const { createFolder } = useDocument();
+  const { uploadFile, createFolder } = useDocument();
+  const supportedFormats = [
+    "application/pdf",
+    ".pdf",
+    ".doc",
+    ".docx",
+    "image/jpeg",
+    ".jpeg",
+    "jpg",
+    "image/png",
+    ".png",
+  ];
 
   return (
     <div className="bg-main rounded-lg">
@@ -25,10 +36,19 @@ export default function AddDocuments() {
           </div>
         }
       >
-        <DefaultDropdown.Item onClick={() => console.log("Upload file")}>
-          <DocumentPlusIcon className="h-5 mr-3" />
-          Upload file
-        </DefaultDropdown.Item>
+        <label className="flex items-center w-full" htmlFor="upload-file">
+          <DefaultDropdown.Item className="w-full">
+            <DocumentPlusIcon className="h-5 mr-3" />
+            Upload file
+            <input
+              id="upload-file"
+              className="hidden"
+              type="file"
+              accept={supportedFormats.join(",")}
+              onChange={uploadFile}
+            />
+          </DefaultDropdown.Item>
+        </label>
         <DefaultDropdown.Item onClick={handleOpen}>
           <FolderPlusIcon className="h-5 mr-3" />
           Create folder
@@ -37,8 +57,8 @@ export default function AddDocuments() {
       <CreateFolderModal
         show={open}
         onClose={handleClose}
-        onSubmit={({ name }) => createFolder({ name })}
+        onSubmit={createFolder}
       />
     </div>
   );
-}
+};

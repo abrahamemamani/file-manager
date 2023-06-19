@@ -7,21 +7,22 @@ import { FolderIcon } from "@heroicons/react/24/outline";
 export interface CreateFolderModalProps {
   show: boolean;
   onClose: () => void;
-  onSubmit: (values: FormValues) => Promise<void>;
+  onSubmit: (values: FolderCreationValues) => void;
 }
 
-type FormValues = {
+export interface FolderCreationValues {
   name: string;
-};
+}
 
 export const CreateFolderModal: FC<CreateFolderModalProps> = ({
   show = false,
   onClose,
   onSubmit,
 }) => {
-  const { register, handleSubmit, resetField } = useForm<FormValues>();
+  const { register, handleSubmit, resetField } =
+    useForm<FolderCreationValues>();
 
-  const onSubmitForm = (values: FormValues) => {
+  const onSubmitForm = (values: FolderCreationValues) => {
     onSubmit(values);
     resetField("name");
     onClose();
