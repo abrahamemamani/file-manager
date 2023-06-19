@@ -3,15 +3,12 @@ import { FC } from "react";
 import { Button, Modal, Label, TextInput } from "flowbite-react";
 import { useForm } from "react-hook-form";
 import { FolderIcon } from "@heroicons/react/24/outline";
+import { FolderCreationValues } from "./hooks/useDocument";
 
 export interface CreateFolderModalProps {
   show: boolean;
   onClose: () => void;
   onSubmit: (values: FolderCreationValues) => void;
-}
-
-export interface FolderCreationValues {
-  name: string;
 }
 
 export const CreateFolderModal: FC<CreateFolderModalProps> = ({

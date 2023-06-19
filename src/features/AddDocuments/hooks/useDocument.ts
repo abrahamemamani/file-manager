@@ -15,10 +15,13 @@ import { FIREBASE_PATH_STORAGE } from "@/vendors/firebase/config";
 import { nanoid } from "nanoid";
 import path from "path";
 import { IDocument } from "@/types/Document.type";
-import { FolderCreationValues } from "../CreateFolderModal";
 
 const db = getFirestore(firebase);
 const storage = getStorage(firebase);
+
+export interface FolderCreationValues {
+  name: string;
+}
 
 export default function useDocument() {
   const { add } = useDocumentStore((state) => state);
