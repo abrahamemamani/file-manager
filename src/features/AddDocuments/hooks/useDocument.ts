@@ -71,7 +71,7 @@ export default function useDocument() {
     }
   };
 
-  const uploadFile = (e: React.ChangeEvent) => {
+  const uploadFile = (e: React.ChangeEvent, parent_id?: string) => {
     const target = e.target as HTMLInputElement;
     const files: FileList | null = target.files;
 
@@ -85,7 +85,7 @@ export default function useDocument() {
         extension: ext,
         file: `${FIREBASE_PATH_STORAGE}${name}-${key}`,
         children: [],
-        parent_id: null,
+        parent_id: parent_id || null,
         created_at: null,
         updated_at: null,
       });
@@ -94,13 +94,13 @@ export default function useDocument() {
     }
   };
 
-  const createFolder = ({ name }: FolderCreationValues) => {
+  const createFolder = ({ name }: FolderCreationValues, parent_id?: string) => {
     const doc = new Document({
       name,
       extension: null,
       file: null,
       children: [],
-      parent_id: null,
+      parent_id: parent_id || null,
       created_at: Timestamp.now(),
       updated_at: Timestamp.now(),
     });

@@ -1,23 +1,37 @@
 "use client";
+import React, { useEffect } from "react";
 import * as R from "ramda";
 import { useDocumentStore } from "@/features/AddDocuments/stores/documents";
 import { transformObjectToArray } from "@/utils/transformObjectToArray";
-import React, { useEffect } from "react";
 import { DocumentIcon, FolderIcon } from "@heroicons/react/24/outline";
 import { Card, Grid } from "@/components";
 import { IDocument } from "@/types/Document.type";
+import { useRouter } from "next/navigation";
 
-export default function Page() {
-  const { data, fetch } = useDocumentStore((state) => state);
+interface Params {
+  id: string;
+}
+
+export default function Page({ params }: { params: Params }) {
+  const { data, fetch, setCurrentFolder } = useDocumentStore((state) => state);
   const documents = transformObjectToArray(data) as IDocument[];
+  const router = useRouter();
 
   useEffect(() => {
-    fetch();
-  }, [fetch]);
+    fetch(params.id ? params.id[0] : null);
+    if (R.isEmpty(params)) setCurrentFolder(undefined);
+  }, [fetch, params, setCurrentFolder]);
+
+  const onClick = (document: IDocument) => {
+    if (!document.extension) {
+      setCurrentFolder(document);
+      router.push(`admin/storage/${document.id}`);
+    }
+  };
 
   const renderItems = documents.map((item) => (
     <Grid.Item key={item.id}>
-      <Card data={item}>
+      <Card onClick={() => onClick(item)} data={item}>
         {({ name, extension }) => (
           <>
             <Card.Icon

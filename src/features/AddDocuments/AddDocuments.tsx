@@ -9,10 +9,13 @@ import { Dropdown as DefaultDropdown } from "flowbite-react";
 import useModal from "./hooks/useModal";
 import { CreateFolderModal } from "./CreateFolderModal";
 import useDocument from "./hooks/useDocument";
+import { useDocumentStore } from "./stores/documents";
 
 export const AddDocuments = () => {
   const { open, handleOpen, handleClose } = useModal();
   const { uploadFile, createFolder } = useDocument();
+  const { currentFolder } = useDocumentStore((state) => state);
+
   const supportedFormats = [
     "application/pdf",
     ".pdf",
@@ -45,7 +48,7 @@ export const AddDocuments = () => {
               className="hidden"
               type="file"
               accept={supportedFormats.join(",")}
-              onChange={uploadFile}
+              onChange={(e) => uploadFile(e, currentFolder?.id)}
             />
           </DefaultDropdown.Item>
         </label>
@@ -57,7 +60,7 @@ export const AddDocuments = () => {
       <CreateFolderModal
         show={open}
         onClose={handleClose}
-        onSubmit={createFolder}
+        onSubmit={(values) => createFolder(values, currentFolder?.id)}
       />
     </div>
   );

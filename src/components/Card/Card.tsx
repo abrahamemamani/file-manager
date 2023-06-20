@@ -8,14 +8,19 @@ export interface CardProps<T> {
   data: T;
   className?: string;
   children: (data: T) => ReactNode;
+  onClick?: () => void;
 }
 
 const CardComponent = <T,>({
   data,
   className = "",
   children,
+  onClick = () => console.log(""),
 }: CardProps<T>) => (
-  <FCard className={`${className} aspect-square`}>
+  <FCard
+    onClick={onClick}
+    className={`${className} aspect-square cursor-pointer`}
+  >
     <div className="flex flex-col items-center">{children(data)}</div>
   </FCard>
 );
