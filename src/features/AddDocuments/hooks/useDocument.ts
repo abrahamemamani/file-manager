@@ -1,12 +1,12 @@
 import * as R from "ramda";
 import { firebase } from "@/vendors/firebase/config";
 import {
-  Timestamp,
   addDoc,
   collection,
   doc,
   getDoc,
   getFirestore,
+  serverTimestamp,
 } from "firebase/firestore";
 import { useDocumentStore } from "../stores/documents";
 import { getStorage, ref, uploadBytes } from "firebase/storage";
@@ -15,6 +15,7 @@ import { FIREBASE_PATH_STORAGE } from "@/vendors/firebase/config";
 import { nanoid } from "nanoid";
 import path from "path";
 import { IDocument } from "@/types/Document.type";
+import { useRouter } from "next/navigation";
 
 const db = getFirestore(firebase);
 const storage = getStorage(firebase);
@@ -24,7 +25,8 @@ export interface FolderCreationValues {
 }
 
 export default function useDocument() {
-  const { add } = useDocumentStore((state) => state);
+  const { add, setCurrentFolder } = useDocumentStore((state) => state);
+  const router = useRouter();
 
   const getDocument = async (id: string) => {
     const docRef = doc(db, "documents", id);
@@ -51,10 +53,10 @@ export default function useDocument() {
     const doc = structuredClone(document);
     const storageRef = ref(storage, `${doc.name}-${key}`);
 
-    uploadBytes(storageRef, file).then((snapshot) => {
-      const { timeCreated, updated } = snapshot.metadata;
-      doc.created_at = timeCreated;
-      doc.updated_at = updated;
+    uploadBytes(storageRef, file).then(() => {
+      // const { timeCreated, updated } = snapshot.metadata;
+      // doc.created_at = timeCreated;
+      // doc.updated_at = updated;
       saveDocument(doc);
     });
   };
@@ -84,10 +86,9 @@ export default function useDocument() {
         name,
         extension: ext,
         file: `${FIREBASE_PATH_STORAGE}${name}-${key}`,
-        children: [],
         parent_id: parent_id || null,
-        created_at: null,
-        updated_at: null,
+        created_at: serverTimestamp(),
+        updated_at: serverTimestamp(),
       });
 
       storeFile(doc, key, file);
@@ -99,12 +100,18 @@ export default function useDocument() {
       name,
       extension: null,
       file: null,
-      children: [],
       parent_id: parent_id || null,
-      created_at: Timestamp.now(),
-      updated_at: Timestamp.now(),
+      created_at: serverTimestamp(),
+      updated_at: serverTimestamp(),
     });
     saveDocument(doc);
+  };
+
+  const openFolder = (document: IDocument) => {
+    if (!document.extension) {
+      setCurrentFolder(document);
+      router.push(`admin/storage/${document.id}`);
+    }
   };
 
   return {
@@ -112,5 +119,6 @@ export default function useDocument() {
     storeFile,
     createFolder,
     uploadFile,
+    openFolder,
   };
 }

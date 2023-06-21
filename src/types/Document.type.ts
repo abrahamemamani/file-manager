@@ -3,7 +3,6 @@ export interface IDocument {
   name: string;
   parent_id: string | null;
   extension: string | null;
-  children: IDocument[];
   file: string | null;
   created_at: unknown;
   updated_at: unknown;

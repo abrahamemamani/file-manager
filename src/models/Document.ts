@@ -5,7 +5,6 @@ export class Document implements IDocument {
   readonly name: string = "";
   readonly parent_id: string | null = null;
   readonly extension: string | null = null;
-  readonly children: IDocument[] = [];
   readonly file: string | null = null;
   readonly created_at: unknown = null;
   readonly updated_at: unknown = null;
@@ -14,7 +13,6 @@ export class Document implements IDocument {
     name,
     parent_id,
     extension,
-    children,
     file,
     created_at,
     updated_at,
@@ -22,7 +20,6 @@ export class Document implements IDocument {
     this.name = name;
     this.parent_id = parent_id;
     this.extension = extension;
-    this.children = children;
     this.file = file;
     this.created_at = created_at;
     this.updated_at = updated_at;

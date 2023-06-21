@@ -3,10 +3,15 @@ import React, { useEffect } from "react";
 import * as R from "ramda";
 import { useDocumentStore } from "@/features/AddDocuments/stores/documents";
 import { transformObjectToArray } from "@/utils/transformObjectToArray";
-import { DocumentIcon, FolderIcon } from "@heroicons/react/24/outline";
 import { Card, Grid } from "@/components";
 import { IDocument } from "@/types/Document.type";
-import { useRouter } from "next/navigation";
+import Image from "next/image";
+import {
+  DEFAULT_FILE_ICON,
+  FOLDER_ICON_URL,
+  ICON_BY_EXTENSIONS,
+} from "@/constants";
+import useDocument from "@/features/AddDocuments/hooks/useDocument";
 
 interface Params {
   id: string;
@@ -15,29 +20,29 @@ interface Params {
 export default function Page({ params }: { params: Params }) {
   const { data, fetch, setCurrentFolder } = useDocumentStore((state) => state);
   const documents = transformObjectToArray(data) as IDocument[];
-  const router = useRouter();
+  const { openFolder } = useDocument();
 
   useEffect(() => {
     fetch(params.id ? params.id[0] : null);
     if (R.isEmpty(params)) setCurrentFolder(undefined);
   }, [fetch, params, setCurrentFolder]);
 
-  const onClick = (document: IDocument) => {
-    if (!document.extension) {
-      setCurrentFolder(document);
-      router.push(`admin/storage/${document.id}`);
-    }
-  };
-
   const renderItems = documents.map((item) => (
     <Grid.Item key={item.id}>
-      <Card onClick={() => onClick(item)} data={item}>
+      <Card onClick={() => openFolder(item)} data={item}>
         {({ name, extension }) => (
           <>
-            <Card.Icon
-              icon={R.isNotNil(extension) ? DocumentIcon : FolderIcon}
+            <Image
+              src={
+                extension
+                  ? ICON_BY_EXTENSIONS[extension] || DEFAULT_FILE_ICON
+                  : FOLDER_ICON_URL
+              }
+              alt="Image of document"
+              height={70}
+              width={70}
             />
-            <Card.Title value={name} />
+            <Card.Title value={`${name}${extension || ""}`} />
           </>
         )}
       </Card>
