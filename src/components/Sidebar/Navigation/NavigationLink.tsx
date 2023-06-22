@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import classNames from "classnames";
 import LinkNext from "next/link";
+import { usePathname } from "next/navigation";
 
 export interface NavigationLinkProps {
   href: string;
@@ -16,10 +17,12 @@ export interface NavigationLinkProps {
 
 export const NavigationLink: FC<NavigationLinkProps> = ({
   href,
-  active,
+  // active,
   icon: Icon,
   name,
 }) => {
+  const pathname = usePathname();
+  const active = pathname.startsWith(href);
   const linkClass = classNames({
     "bg-main text-white dark:bg-secondary-dark dark:text-white": active,
     "text-gray-500 hover:bg-main-light dark:text-gray-400 dark:hover:bg-secondary-dark":
