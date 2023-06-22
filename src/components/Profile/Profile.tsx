@@ -19,7 +19,7 @@ export const Profile = memo(function Profile() {
       arrowIcon={false}
       label={
         <Avatar
-          className="bg-primary-gray rounded-full"
+          className="bg-gray-300 dark:bg-primary-gray rounded-full"
           alt="User settings"
           img={user?.image}
           rounded

@@ -5,5 +5,7 @@ export interface CardTitleProps {
 }
 
 export const CardTitle: FC<CardTitleProps> = ({ value }) => (
-  <span className="text-white text-center text-sm mt-5">{value}</span>
+  <span className="text-primary-gray dark:text-white text-center text-sm mt-5">
+    {value}
+  </span>
 );

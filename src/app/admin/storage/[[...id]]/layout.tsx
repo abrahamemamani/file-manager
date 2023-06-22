@@ -14,7 +14,7 @@ export default function StorageLayout({
     <>
       <header className="flex justify-between items-center mb-4">
         <div>
-          <h2 className="text-secondary-gray text-2xl font-bold mb-2">
+          <h2 className="text-primary-gray dark:text-secondary-gray text-2xl font-bold mb-2">
             {title}
           </h2>
         </div>
