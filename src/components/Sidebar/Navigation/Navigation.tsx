@@ -17,7 +17,7 @@ export const Navigation = ({ list }: NavigationProps) => (
       <li className="mt-auto">
         <Link
           href="#"
-          className="text-gray-500 hover:bg-main-light hover:text-white dark:text-secondary-gray dark:hover:bg-secondary-dark dark:hover:text-white group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6"
+          className="text-gray-500 hover:bg-main-light dark:text-secondary-gray dark:hover:bg-secondary-dark dark:hover:text-white group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6"
         >
           <Cog6ToothIcon className="h-6 w-6 shrink-0" aria-hidden="true" />
           Settings
