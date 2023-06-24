@@ -21,11 +21,10 @@ const SidebarDesktop: FC<INavigation> = ({ navigation }) => (
       <div className="flex h-16 shrink-0 items-center">
         <Image
           priority
-          width={32}
-          height={32}
-          className="h-8 w-auto"
-          src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-          alt="Your Company"
+          width={145}
+          height={33}
+          src="https://res.cloudinary.com/dyssylzmz/image/upload/v1687563768/file-manager/logo_ewn57y.png"
+          alt="Fileroot logo"
         />
       </div>
       <Navigation list={navigation} />
@@ -64,11 +63,10 @@ const SidebarMobile: FC<SidebarProps> = ({ navigation, open, onToggle }) => (
               <div className="flex h-16 shrink-0 items-center">
                 <Image
                   priority
-                  width={32}
-                  height={32}
-                  className="h-8 w-auto"
-                  src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                  alt="Your Company"
+                  width={145}
+                  height={33}
+                  src="https://res.cloudinary.com/dyssylzmz/image/upload/v1687563768/file-manager/logo_ewn57y.png"
+                  alt="Fileroot logo"
                 />
               </div>
               <Navigation list={navigation} />
