@@ -35,7 +35,7 @@ export default function AdminLayout({
         onToggle={setSidebarOpen}
       />
       <div className="lg:pl-72">
-        <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-700 bg-gray-800 px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
+        <div className="bg-white dark:bg-secondary-dark sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 dark:border-gray-700 px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
           <button
             type="button"
             className="-m-2.5 p-2.5 text-gray-700 lg:hidden"
@@ -62,7 +62,7 @@ export default function AdminLayout({
               />
               <input
                 id="search-field"
-                className="block h-full w-full border-0 py-0 pl-8 pr-0 bg-gray-800 text-white placeholder:text-gray-400 focus:ring-0 sm:text-sm"
+                className="bg-white text-primary-dark dark:bg-gray-800 dark:text-white block h-full w-full border-0 py-0 pl-8 pr-0 placeholder:text-gray-400 focus:ring-0 sm:text-sm"
                 placeholder="Search..."
                 type="search"
                 name="search"

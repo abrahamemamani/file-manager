@@ -17,7 +17,7 @@ export interface INavigation {
 
 const SidebarDesktop: FC<INavigation> = ({ navigation }) => (
   <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
-    <div className="bg-gray-900 flex grow flex-col gap-y-5 overflow-y-auto px-6 pb-4">
+    <div className="bg-white dark:bg-primary-dark border-r-[1px] border-r-gray-200 dark:border-r-0 flex grow flex-col gap-y-5 overflow-y-auto px-6 pb-4">
       <div className="flex h-16 shrink-0 items-center">
         <Image
           priority
@@ -59,7 +59,7 @@ const SidebarMobile: FC<SidebarProps> = ({ navigation, open, onToggle }) => (
         >
           <Dialog.Panel className="relative mr-16 flex w-full max-w-xs flex-1">
             <SidebarCloseButton onClick={() => onToggle(false)} />
-            <div className="bg-white dark:bg-gray-900 ring-white/10 flex grow flex-col gap-y-5 overflow-y-auto px-6 pb-4 ring-1">
+            <div className="bg-white dark:bg-primary-gray ring-black/10 dark:ring-white/10 flex grow flex-col gap-y-5 overflow-y-auto px-6 pb-4 ring-1">
               <div className="flex h-16 shrink-0 items-center">
                 <Image
                   priority

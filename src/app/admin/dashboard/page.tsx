@@ -47,9 +47,9 @@ export default function Page() {
 
   return (
     <div>
-      <div className="bg-primary-dark py-8 px-5 sm:py-6 sm:px-10 rounded-3xl">
+      <div className="bg-gray-50 dark:bg-primary-dark py-8 px-5 sm:py-6 sm:px-10 rounded-3xl">
         <div className="grid grid-cols-1 sm:grid-cols-2 items-center">
-          <div className="text-white text-center sm:text-left">
+          <div className="text-primary-gray dark:text-white text-center sm:text-left">
             <h2 className="text-3xl sm:text-3xl md:text-5xl font-bold mb-3">
               Welcome back
               <b className="text-main">
@@ -75,7 +75,7 @@ export default function Page() {
       </div>
 
       <div>
-        <h2 className="text-secondary-gray text-2xl font-bold my-6">
+        <h2 className="text-primary-gray dark:text-secondary-gray text-2xl font-bold my-6">
           Recent documents
         </h2>
         <Grid className="grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-8">
