@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|tsx|json)\""
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|tsx|json)\"",
+    "test": "vitest"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.14",
@@ -36,10 +37,14 @@
     "zustand": "^4.3.8"
   },
   "devDependencies": {
+    "@testing-library/react": "^14.0.0",
     "@types/ramda": "^0.29.2",
     "@typescript-eslint/eslint-plugin": "^5.59.8",
     "@typescript-eslint/parser": "^5.59.8",
+    "@vitejs/plugin-react": "^4.0.1",
     "eslint-config-prettier": "^8.8.0",
-    "prettier": "^2.8.8"
+    "jsdom": "^22.1.0",
+    "prettier": "^2.8.8",
+    "vitest": "^0.32.2"
   }
 }
