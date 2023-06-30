@@ -1,0 +1,11 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`[components/Card] > when CardTitle is rendered > should render 1`] = `
+<DocumentFragment>
+  <span
+    class="text-primary-gray dark:text-white text-center text-sm mt-5"
+  >
+    New title
+  </span>
+</DocumentFragment>
+`;
