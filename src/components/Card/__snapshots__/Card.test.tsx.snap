@@ -1,0 +1,18 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`[components/Card] > when Card is rendered > should renderer 1`] = `
+<DocumentFragment>
+  <div
+    class="flex rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800 flex-col  aspect-square cursor-pointer"
+    data-testid="flowbite-card"
+  >
+    <div
+      class="flex h-full flex-col justify-center gap-4 p-6"
+    >
+      <div
+        class="flex flex-col items-center"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
